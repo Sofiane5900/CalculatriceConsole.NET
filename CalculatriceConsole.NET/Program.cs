@@ -10,9 +10,9 @@ do
         new FigletText("Calculatrice.NET")
             .Color(Color.Red));
 
-    var choix = AnsiConsole.Prompt(
+    var choix = AnsiConsole.Prompt( // Je déclare une variable choix qui est un prompt
         new SelectionPrompt<string>()
-            .Title("Quel option [green]choisissez-vous[/]?")
+            .Title("Quel options [green]choisissez-vous[/]?")
             .PageSize(10)
             .MoreChoicesText("[grey](Utilisez les flèches pour naviguer)[/]")
             .AddChoices(new[] {
