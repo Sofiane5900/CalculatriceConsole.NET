@@ -3,12 +3,7 @@ using Spectre.Console.Cli;
 
 // Valeur de base
 List<double> listNombres = new List<double>();
-var caseError = new Panel("Vous n'étes pas autorisé a effectuer cette action !s")
-{
-    Border = BoxBorder.Rounded,
-    Padding = new Padding(1, 1, 1, 1),
-    BorderStyle = new Style(Color.Orange)
-};
+
 
 do
 {
