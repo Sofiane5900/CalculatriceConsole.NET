@@ -84,16 +84,35 @@ do
             }
             else
             {
-                int difference = listNombres[0];
-                for (int i = 1; i < listNombres.Count; i++)
-                {
-                    difference -= listNombres[i];
-                }
+                int difference = listNombres.Aggregate((a, b) => a - b);
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"La différence des nombres que vous avez saisie est : {difference}");
+                listNombres.Clear();
                 Console.ResetColor();
             }
             break;
+        case 4: // Multiplication
+            if (listNombres.Count == 0)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Vous n'avez pas saisie de nombre.");
+                Console.ResetColor();
+                break;
+            }
+            else
+            {
+                int multiplicateur = listNombres.Aggregate((a, b) => a * b);
+
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.WriteLine($"La multiplication des nombres que vous avez saisie est : {multiplicateur}");
+                listNombres.Clear();
+                Console.ResetColor();
+            }
+            break;
+
+
     }
 } while (true);
