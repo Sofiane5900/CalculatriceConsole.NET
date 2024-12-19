@@ -130,6 +130,11 @@ do
                 Console.ResetColor();
             }
             break;
-
+        default: // Tout ce qui n'éxiste pas en tant que case, valeur de défault
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Vous n'étes pas autorisée a effectuer cette action.");
+            Console.ResetColor();
+            break;
     }
 } while (true);
