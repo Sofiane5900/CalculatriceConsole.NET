@@ -1,12 +1,16 @@
-﻿
+﻿using Spectre.Console;
+using Spectre.Console.Cli;
+
 // Valeur de base
 List<int> listNombres = new List<int>();
 
 
 do
 {
-
-    Console.WriteLine("--- Menu calculatrice ----");
+    AnsiConsole.Write(
+    new FigletText("Calculatrice.NET")
+        .Color(Color.Red));
+    Console.WriteLine("--- Menu ---");
 
     Console.WriteLine("1 -- Saisie des nombres");
     Console.WriteLine("2 -- Addition");
