@@ -104,7 +104,6 @@ do
             else
             {
                 int multiplicateur = listNombres.Aggregate((a, b) => a * b);
-
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"La multiplication des nombres que vous avez saisie est : {multiplicateur}");
@@ -112,7 +111,25 @@ do
                 Console.ResetColor();
             }
             break;
-
+        case 5: // Division
+            if (listNombres.Count == 0)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Vous n'avez pas saisie de nombre.");
+                Console.ResetColor();
+                break;
+            }
+            else
+            {
+                int division = listNombres.Aggregate((a, b) => a / b);
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Magenta;
+                Console.WriteLine($"La division des nombres que vous avez saisie est : {division}");
+                listNombres.Clear();
+                Console.ResetColor();
+            }
+            break;
 
     }
 } while (true);
