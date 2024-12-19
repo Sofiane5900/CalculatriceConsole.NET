@@ -19,7 +19,7 @@ do
     int choice = int.Parse(Console.ReadLine());
     switch (choice)
     {
-        case 0:
+        case 0: // Quitter l'application
             Environment.Exit(0);
             break;
         case 1: // Saisie des nombres
@@ -53,6 +53,32 @@ do
                 }
             }
             break;
-        case 2
+        case 2: // Addition
+            if (listNombres.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Vous n'avez pas saisie de nombre.");
+                break;
+            }
+            else
+            {
+                int somme = listNombres.Sum();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"La somme des nombres que vous avez saisie est : {somme}");
+            } break;
+        case 2: // Addition
+            if (listNombres.Count == 0)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Vous n'avez pas saisie de nombre.");
+                break;
+            }
+            else
+            {
+                int somme = listNombres.Sum();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"La somme des nombres que vous avez saisie est : {somme}");
+            }
+            break;
     }
 } while (true);
