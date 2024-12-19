@@ -2,16 +2,21 @@
 using Spectre.Console.Cli;
 
 // Valeur de base
-List<int> listNombres = new List<int>();
-
+List<double> listNombres = new List<double>();
+var caseError = new Panel("Vous n'étes pas autorisé a effectuer cette action !s")
+{
+    Border = BoxBorder.Rounded,
+    Padding = new Padding(1, 1, 1, 1),
+    BorderStyle = new Style(Color.Orange)
+};
 
 do
 {
-    AnsiConsole.Write(
-    new FigletText("Calculatrice.NET")
-        .Color(Color.Red));
-    Console.WriteLine("--- Menu ---");
-
+            AnsiConsole.Write(
+         new FigletText("Calculatrice.NET")
+             .Color(Color.Red));
+;
+    AnsiConsole.MarkupLine("[bold red] -- Menu --[/]");
     Console.WriteLine("1 -- Saisie des nombres");
     Console.WriteLine("2 -- Addition");
     Console.WriteLine("3 -- Soustraction");
@@ -20,7 +25,20 @@ do
     Console.WriteLine("0 -- Quitter");
 
     Console.Write("Faites un choix : ");
-    int choice = int.Parse(Console.ReadLine());
+    int choice;
+    bool successChoice = int.TryParse(Console.ReadLine(), out choice);
+
+
+    if (!successChoice)
+    {
+        Console.Clear();
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine("\tVous avez utiliser un caractère non autorisé.");
+        Console.ResetColor();
+        continue;
+    }
+
+
     switch (choice)
     {
         case 0: // Quitter l'application
@@ -36,14 +54,12 @@ do
             while (true)
             {
                 Console.Write($"Merci de saisir le nombre {compteur + 1}: ");
-                int nombresInput;
-                bool success = int.TryParse(Console.ReadLine(), out nombresInput);
+                double nombresInput;
+                bool successInput = double.TryParse(Console.ReadLine(), out nombresInput);
 
-                if (!success)
+                if (!successInput)
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("\t\tErreur de saisie, veuillez saisir un nombre.");
-                    Console.ResetColor();
+                    AnsiConsole.MarkupLine("\t\t[red underline]Erreur de saisie, veuillez saisir un nombre.[/]");
                 }
                 else if (nombresInput.Equals(999)) // Si la saisie de l'user = 999 je sors de ma "case 1"
                 {
@@ -69,7 +85,7 @@ do
             else
             {
                 Console.Clear();
-                int somme = listNombres.Sum();
+                double somme = listNombres.Sum();
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"La somme des nombres que vous avez saisie est : {somme}");
                 Console.ResetColor();
@@ -88,7 +104,7 @@ do
             }
             else
             {
-                int difference = listNombres.Aggregate((a, b) => a - b);
+                double difference = listNombres.Aggregate((a, b) => a - b);
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine($"La différence des nombres que vous avez saisie est : {difference}");
@@ -107,7 +123,7 @@ do
             }
             else
             {
-                int multiplicateur = listNombres.Aggregate((a, b) => a * b);
+                double multiplicateur = listNombres.Aggregate((a, b) => a * b);
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"La multiplication des nombres que vous avez saisie est : {multiplicateur}");
@@ -126,7 +142,7 @@ do
             }
             else
             {
-                int division = listNombres.Aggregate((a, b) => a / b);
+                double division = listNombres.Aggregate((a, b) => a / b);
                 Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Magenta;
                 Console.WriteLine($"La division des nombres que vous avez saisie est : {division}");
@@ -137,7 +153,7 @@ do
         default: // Tout ce qui n'éxiste pas en tant que case, valeur de défault
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("Vous n'étes pas autorisée a effectuer cette action.");
+            AnsiConsole.MarkupLine("[red underline]Vous n'étes pas autorisé a effectué cette action !.[/]");
             Console.ResetColor();
             break;
     }
