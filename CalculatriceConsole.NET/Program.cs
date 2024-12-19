@@ -56,28 +56,43 @@ do
         case 2: // Addition
             if (listNombres.Count == 0)
             {
+                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Vous n'avez pas saisie de nombre.");
+                Console.ResetColor ();
                 break;
             }
             else
             {
+                Console.Clear();
                 int somme = listNombres.Sum();
-                Console.ForegroundColor = ConsoleColor.Green;
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"La somme des nombres que vous avez saisie est : {somme}");
-            } break;
-        case 2: // Addition
+                Console.ResetColor();
+                listNombres.Clear();
+
+            }
+            break;
+        case 3: // Soustraction
             if (listNombres.Count == 0)
             {
+                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Vous n'avez pas saisie de nombre.");
+                Console.ResetColor () ;
                 break;
             }
             else
             {
-                int somme = listNombres.Sum();
+                int difference = listNombres[0];
+                for (int i = 1; i < listNombres.Count; i++)
+                {
+                    difference -= listNombres[i];
+                }
+                Console.Clear();
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"La somme des nombres que vous avez saisie est : {somme}");
+                Console.WriteLine($"La différence des nombres que vous avez saisie est : {difference}");
+                Console.ResetColor();
             }
             break;
     }
