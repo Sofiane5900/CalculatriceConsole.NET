@@ -12,9 +12,8 @@ do
 
     var choix = AnsiConsole.Prompt( // Je déclare une variable choix qui est un prompt
         new SelectionPrompt<string>()
-            .Title("Quel options [green]choisissez-vous[/]?")
-            .PageSize(10)
-            .MoreChoicesText("[grey](Utilisez les flèches pour naviguer)[/]")
+            .Title("Quel options [blue]choisissez-vous[/]?")
+            .PageSize(6)
             .AddChoices(new[] {
                 "Saisie des nombres", "Addition", "Soustraction",
                 "Multiplication", "Division", "Quitter"
